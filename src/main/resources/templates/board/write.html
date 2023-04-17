@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<form method="post" th:action="@{/board/write}" th:object="${boardRequiredCheck}">
+    <div th:each="err : ${#fields.globalErrors()}" th:text="${err}"></div>
+    <dl>
+        <dt>제목</dt>
+        <dd>
+            <input type="text" name="sub" th:field="*{sub}">
+            <div th:each="err : ${#fields.errors('sub')}" th:text="${err}"></div>
+        </dd>
+    </dl>
+    <dl>
+        <dt>내용</dt>
+        <dd>
+            <textarea name="content" th:field="*{content}"></textarea>
+            <div th:each="err : ${#fields.errors('content')}" th:text="${err}"></div>
+        </dd>
+    </dl>
+
+
+    <button type="submit">작성하기</button>
+</form>
+</body>
+</html>
